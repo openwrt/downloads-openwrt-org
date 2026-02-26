@@ -1,0 +1,65 @@
+{
+  "release": "24.10.5",
+  "profiles": [
+    {
+      "id": "acer_predator-w6",
+      "titles": [
+        {
+          "model": "Predator Connect W6",
+          "vendor": "Acer"
+        }
+      ],
+      "target": "mediatek/filogic"
+    },
+    {
+      "id": "asus_tuf-ax6000",
+      "titles": [
+        {
+          "model": "TUF-AX6000",
+          "vendor": "ASUS"
+        }
+      ],
+      "target": "mediatek/filogic"
+    },
+    {
+      "id": "glinet_gl-mt6000",
+      "titles": [
+        {
+          "model": "GL-MT6000",
+          "vendor": "GL.iNet"
+        }
+      ],
+      "target": "mediatek/filogic"
+    },
+    {
+      "id": "xiaomi_redmi-router-ax6000-stock",
+      "titles": [
+        {
+          "model": "Redmi Router AX6000 (stock layout)",
+          "vendor": "Xiaomi"
+        }
+      ],
+      "target": "mediatek/filogic"
+    },
+    {
+      "id": "xiaomi_redmi-router-ax6000-ubootmod",
+      "titles": [
+        {
+          "model": "Redmi Router AX6000 (OpenWrt U-Boot layout)",
+          "vendor": "Xiaomi"
+        }
+      ],
+      "target": "mediatek/filogic"
+    },
+    {
+      "id": "zyxel_ex5700-telenor",
+      "titles": [
+        {
+          "model": "EX5700 (Telenor)",
+          "vendor": "Zyxel"
+        }
+      ],
+      "target": "mediatek/filogic"
+    }
+  ]
+}
