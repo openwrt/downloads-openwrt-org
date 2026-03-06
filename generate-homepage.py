@@ -83,13 +83,11 @@ def group_versions_by_series(versions):
 
 def generate(data):
     stable = data["stable_version"]
-    upcoming = data.get("upcoming_version", "")
+    oldstable = data.get("oldstable_version", "")
     all_versions = data["versions_list"]
 
-    stable_mm = major_minor(stable)
-
-    # Everything except the hero versions (stable, upcoming) goes to archive
-    hero = {stable, upcoming} - {""}
+    # Everything except the hero versions goes to archive
+    hero = {stable, oldstable} - {""}
     archive_versions = [v for v in all_versions if v not in hero]
 
     lines = []
@@ -124,31 +122,34 @@ def generate(data):
         '    <div class="hp-card-badge">Stable</div>\n'
         f'    <h2><a href="releases/{he(stable)}/targets/">'
         f'OpenWrt {he(stable)}</a></h2>\n'
-        f'    <p>The current recommended release for all users.</p>\n'
+        f'    <p>The current stable OpenWrt {he(major_minor(stable))} release is linked below. '
+        f'It is adviced to use the latest available release if possible.</p>\n'
         f'    <a class="hp-btn" href="releases/{he(stable)}/targets/">Download</a>\n'
         '  </div>\n'
     )
 
-    # Upcoming release card (if present)
-    if upcoming:
+    # Old Stable release card (if present)
+    if oldstable:
         lines.append(
-            '  <div class="hp-card hp-card-upcoming">\n'
-            '    <div class="hp-card-badge">Upcoming</div>\n'
-            f'    <h2><a href="releases/{he(upcoming)}/targets/">'
-            f'OpenWrt {he(upcoming)}</a></h2>\n'
-            f'    <p>Release candidate &mdash; '
-            f'{he(major_minor(upcoming))} will succeed {he(stable_mm)}.</p>\n'
+            '  <div class="hp-card hp-card-oldstable">\n'
+            '    <div class="hp-card-badge">Old Stable</div>\n'
+            f'    <h2><a href="releases/{he(oldstable)}/targets/">'
+            f'OpenWrt {he(oldstable)}</a></h2>\n'
+            f'    <p>The OpenWrt {he(major_minor(oldstable))} release is considered outdated '
+            f'but will still receive limited security and bug fixes for some time.</p>\n'
             f'    <a class="hp-btn hp-btn-secondary" '
-            f'href="releases/{he(upcoming)}/targets/">Download RC</a>\n'
+            f'href="releases/{he(oldstable)}/targets/">Download</a>\n'
             '  </div>\n'
         )
 
     # Snapshots card
     lines.append(
-        '  <div class="hp-card">\n'
+        '  <div class="hp-card hp-card-snapshots">\n'
         '    <div class="hp-card-badge">Development</div>\n'
         '    <h2><a href="snapshots/targets/">Snapshots</a></h2>\n'
-        '    <p>Automated daily builds from the development master branch.</p>\n'
+        '    <p>Development snapshots are automatic unattended daily builds of the current '
+    'OpenWrt development master branch. Bear in mind that these images are generally '
+    'not tested, use them at your own risk.</p>\n'
         '    <a class="hp-btn hp-btn-secondary" href="snapshots/targets/">Browse snapshots</a>\n'
         '  </div>\n'
         '</div>\n'
@@ -158,8 +159,8 @@ def generate(data):
     if archive_versions:
         lines.append('<div class="hp-section">\n  <h3>Release Archive</h3>\n')
         lines.append(
-            '  <p>Older releases &mdash; generally out of date and no longer '
-            'maintained.</p>\n'
+            '  <p>The releases linked below are mostly for historic interest &mdash; '
+            "they're generally out of date and no longer maintained.</p>\n"
         )
 
         grouped = group_versions_by_series(archive_versions)

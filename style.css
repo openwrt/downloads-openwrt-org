@@ -223,10 +223,13 @@ footer a {
   flex: 1;
 }
 .hp-card-primary {
-  border-left: 4px solid #00ace2;
+  border-left: 4px solid #5cb85c;
 }
-.hp-card-upcoming {
+.hp-card-oldstable {
   border-left: 4px solid #f0ad4e;
+}
+.hp-card-snapshots {
+  border-left: 4px solid #d9534f;
 }
 .hp-card-badge {
   font-size: 11px;
@@ -448,10 +451,13 @@ footer a {
     color: #999;
   }
   .hp-card-primary {
-    border-left-color: #4dc9f6;
+    border-left-color: #5cb85c;
   }
-  .hp-card-upcoming {
+  .hp-card-oldstable {
     border-left-color: #f0ad4e;
+  }
+  .hp-card-snapshots {
+    border-left-color: #d9534f;
   }
   .hp-card-badge {
     color: #999;
