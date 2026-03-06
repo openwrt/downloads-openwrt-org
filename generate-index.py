@@ -25,6 +25,12 @@ LOGO_IMG = f'<img src="{LOGO_PATH}" width="40" height="48" alt="OpenWrt">'
 
 FOOTER_HTML = '<footer>Open Source Downloads supported by <a href="https://www.fastly.com/">Fastly CDN</a>.</footer>'
 
+COPY_SCRIPT = """<script>
+function copyHash(el){var h=el.parentNode.title;if(!h||h==='-')return;
+navigator.clipboard.writeText(h).then(function(){
+el.dataset.orig=el.textContent;el.textContent='Copied!';
+setTimeout(function(){el.textContent=el.dataset.orig},1500)})}</script>"""
+
 # Metafile patterns for target directories
 METAFILE_RE = re.compile(
     r"packages|config\.seed|\.buildinfo|manifest|"
@@ -150,7 +156,13 @@ def row_with_href(display, href, is_dir, checksum, size, date):
         href_str = html.escape(href)
         label = html.escape(display)
 
-    chk_td = f'<td class="sh" title="{checksum}">{checksum}</td>'
+    if checksum and checksum != "-":
+        chk_td = (
+            f'<td class="sh" title="{checksum}">'
+            f'<span class="chk" onclick="copyHash(this)">{checksum}</span></td>'
+        )
+    else:
+        chk_td = f'<td class="sh">-</td>'
     return (
         f'  <tr><td class="n"><a href="{href_str}">{label}</a></td>'
         f'{chk_td}<td class="s">{size}</td><td class="d">{date}</td></tr>'
@@ -212,6 +224,7 @@ def generate_target_page(directory, virt_path, entries, checksums, checktype):
     lines.append("</table>")
 
     lines.append(FOOTER_HTML)
+    lines.append(COPY_SCRIPT)
     lines.append("</body></html>")
     return "\n".join(lines)
 

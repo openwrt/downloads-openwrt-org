@@ -96,6 +96,12 @@ a:hover, a:active, a:focus {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.chk {
+  cursor: pointer;
+}
+.chk:hover {
+  color: #00ace2;
+}
 footer {
   font-size: 80%;
   text-align: right;
@@ -394,6 +400,9 @@ footer a {
   }
   a:hover, a:active, a:focus {
     color: #9ee5ff;
+  }
+  .chk:hover {
+    color: #4dc9f6;
   }
   footer {
     color: #555;
