@@ -1,0 +1,35 @@
+Package: base-files
+Version: 1660-r28597-984c0740b8
+Depends: libc, netifd, jsonfilter, usign, openwrt-keyring, fstools, fwtool
+Source: package/base-files
+License: GPL-2.0
+Section: base
+Architecture: aarch64_cortex-a53
+Installed-Size: 51200
+Filename: base-files_1660-r28597-984c0740b8_aarch64_cortex-a53.ipk
+Size: 52480
+SHA256sum: a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2
+
+Package: busybox
+Version: 1.36.1-2
+Depends: libc
+Source: package/utils/busybox
+License: GPL-2.0
+Section: base
+Architecture: aarch64_cortex-a53
+Installed-Size: 245760
+Filename: busybox_1.36.1-2_aarch64_cortex-a53.ipk
+Size: 246400
+SHA256sum: b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3
+
+Package: dnsmasq
+Version: 2.90-5
+Depends: libc, libubus20231128
+Source: package/network/services/dnsmasq
+License: GPL-2.0
+Section: net
+Architecture: aarch64_cortex-a53
+Installed-Size: 143360
+Filename: dnsmasq_2.90-5_aarch64_cortex-a53.ipk
+Size: 143744
+SHA256sum: c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4
